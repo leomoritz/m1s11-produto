@@ -7,7 +7,6 @@ import lombok.Setter;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -34,6 +33,10 @@ public class ProdutoDto {
         this.valor = valor;
     }
 
+    public ProdutoDto() {
+
+    }
+
     public Produto converteParaProduto(){
         Produto novoProduto = new Produto();
         novoProduto.setNome(this.nome);
@@ -41,6 +44,13 @@ public class ProdutoDto {
         novoProduto.setDataLancamento(LocalDate.parse(this.dataLancamento, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         novoProduto.setValor(this.valor);
         return novoProduto;
+    }
+
+     public void converterParaDto(Produto produto){
+        this.nome = produto.getNome();
+        this.descricao = produto.getDescricao();
+        this.dataLancamento = produto.getDataLancamento().toString();
+        this.valor = produto.getValor();
     }
 
 

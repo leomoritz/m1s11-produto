@@ -50,7 +50,7 @@ public class ProdutoService {
         produto.setDataLancamento(novoProduto.getDataLancamento());
         produto.setValor(novoProduto.getValor());
 
-        return produtoRepository.save(novoProduto);
+        return produtoRepository.save(produto);
     }
 
     public void delete(Long id){

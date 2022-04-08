@@ -25,6 +25,8 @@
             <th style="color: white" class="bg-primary">Descrição</th>
             <th style="color: white" class="bg-primary">Lançamento</th>
             <th style="color: white" class="bg-primary">Valor</th>
+            <th class="bg-primary"></th>
+            <th class="bg-primary"></th>
         </tr>
         </thead>
         <tbody>
@@ -32,15 +34,21 @@
             <td class="table-light" th:text="${produto.getId()}">ID</td>
             <td class="table-light" th:text="${produto.getNome()}">Nome Produto</td>
             <td class="table-light" th:text="${produto.getDescricao()}">Descrição Produto</td>
-            <td class="table-light" th:text="${produto.getDataLancamento()}">Data Lançamento</td>
+            <td class="table-light" th:text="${#temporals.format(produto.getDataLancamento(),'dd/MM/yyyy')}">Data Lancamento</td>
             <td class="table-light" th:text="${produto.getValor()}">Valor Produto</td>
+            <td class="table-light">
+                <a th:href="@{/produto/{produtoId}/atualizar(produtoId = ${produto.getId()})}">Editar</a>
+            </td>
+            <td class="table-light">
+                <a th:href="@{/produto/{produtoId}/deletar(produtoId = ${produto.getId()})}">Excluir</a>
+            </td>
         </tr>
         </tbody>
     </table>
 
     <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 15px">
         <button class="btn btn-primary" type="button" onclick="window.location.href = 'http://localhost:8081/produto/cadastro'">Novo Produto</button>
-        <button class="btn btn-primary" type="button" onclick="window.location.href = 'http://localhost:8081/index'">Voltar</button>
+        <button class="btn btn-primary" type="button" onclick="window.location.href = 'http://localhost:8081/produto/index'">Voltar</button>
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
