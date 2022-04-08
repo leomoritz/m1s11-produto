@@ -22,7 +22,7 @@ public class Produto {
 
     private String descricao;
 
-    @Column(name = "data_lancamento")
+    @Column(name = "data_lancamento", nullable = false)
     private LocalDate dataLancamento;
 
     @Column(nullable = false)
